@@ -1,26 +1,28 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import React from 'react';
-import ExploreContainer from '../components/ExploreContainer';
+import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
+         IonLabel
+} from '@ionic/react';
+//import ExploreContainer from '../components/ExploreContainer';
+import MapContainer from '../components/MapContainer';
+import DistanceForm from '../components/DistanceForm';
 import './Home.css';
 
 const Home: React.FC = () => {
+  const [distance, setDistance] = useState();
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle>Running App</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
+      <IonContent class='ion-justify-content-center'>
+        <MapContainer/>
+        <DistanceForm setDistance={setDistance}/>
+        <IonLabel>{distance}</IonLabel>
       </IonContent>
     </IonPage>
   );
 };
-
 export default Home;
